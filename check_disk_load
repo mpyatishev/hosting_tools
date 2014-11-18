@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#nagios plugin for disks load check
+
+load=`/usr/sbin/iostat -x -c 2 $1 | /usr/bin/awk 'END {print $8}'`
+
+echo "OK - disk load: $load | $1=$load%"
+
+exit 0
